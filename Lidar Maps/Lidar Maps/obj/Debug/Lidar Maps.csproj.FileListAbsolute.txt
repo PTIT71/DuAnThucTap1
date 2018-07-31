@@ -1,0 +1,20 @@
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.exe.config
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.exe
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.pdb
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csprojAssemblyReference.cache
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar_Maps.Properties.Resources.resources
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csproj.GenerateResource.cache
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csproj.CoreCompileInputs.cache
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.exe
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.pdb
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar_Maps.Form1.resources
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csprojAssemblyReference.cache
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar_Maps.Form1.resources
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar_Maps.Properties.Resources.resources
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csproj.GenerateResource.cache
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csproj.CoreCompileInputs.cache
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.exe
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.pdb
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.exe.config
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.exe
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.pdb

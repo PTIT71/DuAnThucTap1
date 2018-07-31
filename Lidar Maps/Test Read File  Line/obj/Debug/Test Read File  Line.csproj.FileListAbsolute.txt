@@ -1,0 +1,14 @@
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.exe.config
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.exe
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.pdb
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.csproj.CoreCompileInputs.cache
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.exe
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.pdb
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.csprojAssemblyReference.cache
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.exe.config
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.exe
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.pdb
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.csprojAssemblyReference.cache
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.csproj.CoreCompileInputs.cache
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.exe
+E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.pdb

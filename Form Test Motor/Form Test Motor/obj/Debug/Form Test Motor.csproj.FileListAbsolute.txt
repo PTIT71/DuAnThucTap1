@@ -1,0 +1,10 @@
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\bin\Debug\Form Test Motor.exe.config
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\bin\Debug\Form Test Motor.exe
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\bin\Debug\Form Test Motor.pdb
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\obj\Debug\Form Test Motor.csprojAssemblyReference.cache
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\obj\Debug\Form_Test_Motor.Properties.Resources.resources
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\obj\Debug\Form Test Motor.csproj.GenerateResource.cache
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\obj\Debug\Form Test Motor.csproj.CoreCompileInputs.cache
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\obj\Debug\Form Test Motor.exe
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\obj\Debug\Form Test Motor.pdb
+E:\Thực Tập\Tuần 1 - Lidar\DemoRPLidar\Program\Form Test Motor\Form Test Motor\obj\Debug\Form_Test_Motor.Form1.resources
