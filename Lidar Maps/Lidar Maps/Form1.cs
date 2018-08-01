@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+
+
 namespace Lidar_Maps
 {
     public partial class Form1 : Form
@@ -19,20 +21,38 @@ namespace Lidar_Maps
         Graphics g;
         Timer tm = new Timer();
         int index = 0;
+
+        Map OriginMap = new Map();
+        Map CurrentMap = new Map();
+
         private void button1_Click(object sender, EventArgs e)
         {
             panel1.Refresh();
             DataProcessing DATA = new DataProcessing();
             g.DrawLine(new Pen(Color.Red, 2), 400, 0, 400, 1000);
             g.DrawLine(new Pen(Color.Red, 2), 0, 400, 1000, 400);
-            List<double> lstData = DATA.standarData();
-            MessageBox.Show(lstData.Count.ToString());
 
-            for(int i =0;i<lstData.Count-1;i+=2)
+            List<Map> lstData = DATA.GetData();
+            OriginMap = lstData[0];
+            for (int i = 0; i < lstData.Count; i++)
             {
-                index = i;
-                g.DrawLine(new Pen(Color.Black,3), (float)lstData[i], (float)lstData[i + 1], (float)lstData[i] + 3, (float)lstData[i + 1]);
+
+                //Tính độ dịch
+                double DelTop = lstData[i].GetGPS().top - OriginMap.GetGPS().top;
+                //Console.WriteLine("deltop: " + DelTop);
+                //Vẽ
+                Console.WriteLine("Map " + i);
+                lstData[i].DrawMap(g, DelTop, 0, 0);
             }
+
+            //for (int i = 0; i < lstData.Count; i++)
+            //{
+            //    Console.WriteLine("Map: " + (i + 1).ToString());
+            //    //lstData[i].ShowGPS();
+            //    lstData[i].Show();
+
+            //    Console.WriteLine();
+            //}
 
             MessageBox.Show("Vẽ xong nà!");
           
@@ -54,6 +74,7 @@ namespace Lidar_Maps
            
         }
        public static int dophangiai = 1;
+
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             dophangiai = trackBar1.Value;

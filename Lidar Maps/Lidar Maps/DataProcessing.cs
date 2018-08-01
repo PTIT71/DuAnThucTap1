@@ -5,36 +5,57 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
 namespace Lidar_Maps
 {
     class DataProcessing
     {
         //Lấy dữ liệu từ file lên mảng chứa:
-        public List<double> GetData()
+        public List<Map> GetData()
         {
-
-            List<Double> lstDuLieu = new List<double>();
+            //Danh sách các map mỗi lần wet
+            List<Map> lstMap = new List<Map>();
+            //Mỗi Map đơn vị: Chứa listdot
+            Map map = new Map();
+            lstMap.Add(map);
+            //Đọc file
             var fileStream = new FileStream(Form1.fileName, FileMode.Open, FileAccess.Read);
-          
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
-                string line;
-                string recycleLine;
+                //đọc 3 line rác
                 for (int i = 0; i < 3; i++)
                 {
                     streamReader.ReadLine();
                 }
+                //Start Get data
+                string line;
+                Dot newDot;
+                Dot oldDot = new Dot(-1, -1);
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     string[] data = line.Split(' ');
-                    foreach (string number in data)
+                    newDot = new Dot(Convert.ToDouble(data[0]), Convert.ToDouble(data[1]));
+
+                    if (newDot.Angle < oldDot.Angle && ((oldDot.Angle) >= (359))&&(newDot.Angle <= 2)) // -90 quay hình
                     {
-                        lstDuLieu.Add(Convert.ToDouble(number));
+                        //Qua map mới
+                        map = new Map();
+                        lstMap.Add(map);
+                        lstMap[lstMap.Count - 1].lstDot.Add(newDot);
+                        oldDot = newDot;
                     }
+                    else //Ngay lần đầu làm việc ấy; nó đã vào đây. Cho đến khi đụng phần tử của map mới
+                    {
+                        //Bỏ vô Map hiện tại
+                        lstMap[lstMap.Count - 1].lstDot.Add(newDot);
+                        oldDot = newDot;
+                    }
+
                 }
             }
-            return lstDuLieu;
+            return lstMap;
         }
+        /*
         public List<double> standarData()
         {
              List<double> lstData = RotateAxis( GetData());
@@ -78,7 +99,7 @@ namespace Lidar_Maps
         {
             return (Angle * Math.PI) / 180;
         }
-
+        */
          
 
     }

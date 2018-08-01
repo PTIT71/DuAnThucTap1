@@ -12,3 +12,10 @@ E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\o
 E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.csproj.CoreCompileInputs.cache
 E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.exe
 E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.pdb
+E:\DuAnThucTap1\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.exe.config
+E:\DuAnThucTap1\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.exe
+E:\DuAnThucTap1\Lidar Maps\Test Read File  Line\bin\Debug\Test Read File  Line.pdb
+E:\DuAnThucTap1\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.csprojAssemblyReference.cache
+E:\DuAnThucTap1\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.csproj.CoreCompileInputs.cache
+E:\DuAnThucTap1\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.exe
+E:\DuAnThucTap1\Lidar Maps\Test Read File  Line\obj\Debug\Test Read File  Line.pdb

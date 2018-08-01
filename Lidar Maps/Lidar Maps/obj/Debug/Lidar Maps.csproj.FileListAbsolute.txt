@@ -18,3 +18,13 @@ E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\obj\Debug\L
 E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.exe.config
 E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.exe
 E:\ThucTap\FirstWeek_Lidar\DemoRPLidar\Program\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.pdb
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.exe.config
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.exe
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\bin\Debug\Lidar Maps.pdb
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csprojAssemblyReference.cache
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\obj\Debug\Lidar_Maps.Form1.resources
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\obj\Debug\Lidar_Maps.Properties.Resources.resources
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csproj.GenerateResource.cache
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.csproj.CoreCompileInputs.cache
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.exe
+E:\DuAnThucTap1\Lidar Maps\Lidar Maps\obj\Debug\Lidar Maps.pdb

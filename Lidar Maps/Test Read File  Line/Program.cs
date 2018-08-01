@@ -14,11 +14,11 @@ namespace Test_Read_File__Line
         static void Main(string[] args)
         {
 
-            Console.Write("Top: "); x0 = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Left: "); z0 = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Right: "); y0 = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Top: "); x0 = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Left: "); z0 = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Right: "); y0 = Convert.ToInt32(Console.ReadLine());
 
-            ConvertToaDo();
+            XuatDuLieuLenManHinh();
 
             Console.ReadKey();
 
@@ -28,91 +28,97 @@ namespace Test_Read_File__Line
         static int last = 0;
         public static void ConvertToaDo()
         {
-            //Lấy dữ liệu từ file
-            List<double> lstDuLieu = new List<double>();
-            lstDuLieu = GetData();
-
-            for(int i =head+9;i<lstDuLieu.Count;i+=3)
-            {
-                if((int)lstDuLieu[i]==0 || (int)lstDuLieu[i] == 1)
-                {
-                    last = i;
-                    break;
-                }
-            }
-
-
-
-
-            //for (int i = head; i < last; i += 3)
-            //{
-            //    Console.WriteLine("Angle: " + lstDuLieu[i] + " " + "Dist: " + lstDuLieu[i + 1]);
-            //}
-
-            Console.Write(Math.Cos(270));
-
-
-            Console.Write("Xong");
+          
         }
         static public void XuatDuLieuLenManHinh()
         {
+            List<Map> lstMap = GetData();
 
-            List<double> lstDuLieu = new List<double>();
-            // lstDuLieu = standarData();
-            lstDuLieu = GetData();
-            Console.WriteLine(lstDuLieu.Count());
-            for (int i = 0; i < lstDuLieu.Count; i += 3)
+            for(int i=0;i<lstMap.Count;i++)
             {
-                Console.WriteLine("Angle: " + lstDuLieu[i] + " " + "Dist: " + lstDuLieu[i + 1]);
+                Console.WriteLine("Map: " + (i+1).ToString());
+                // lstMap[i].ShowGPS();
+                lstMap[i].Show();
+
+                Console.WriteLine();
             }
+           
         }
-        static public List<double> standarData()
-        {
-            // List<double> lstData = RotateAxis180( GetData());
+        //static public List<double> standarData()
+        //{
+            //// List<double> lstData = RotateAxis180( GetData());
 
-            List<double> lstData =GetData();
+            //List<double> lstData =GetData();
 
-            List<double> lstDataStandar = new List<double>();
+            //List<double> lstDataStandar = new List<double>();
 
 
-            for (int i = 0; i < lstData.Count - 3; i += 3)
-            {
-                double x = (lstData[i + 1] * Math.Cos(DegreeToRadius(lstData[i])))*0.1;
-                double y = (lstData[i + 1] * Math.Sin(DegreeToRadius(lstData[i])))*0.1;
+            //for (int i = 0; i < lstData.Count - 3; i += 3)
+            //{
+            //    double x = (lstData[i + 1] * Math.Cos(DegreeToRadius(lstData[i])))*0.1;
+            //    double y = (lstData[i + 1] * Math.Sin(DegreeToRadius(lstData[i])))*0.1;
 
-                //Test đọc giá trị được tính tóa
-               // Console.WriteLine("Khoang Cach: " + lstData[i + 1] + " " + "Angle: " + lstData[i]);
-                //
+            //    //Test đọc giá trị được tính tóa
+            //   // Console.WriteLine("Khoang Cach: " + lstData[i + 1] + " " + "Angle: " + lstData[i]);
+            //    //
 
-                //Hết test
-                lstDataStandar.Add(x);
-                lstDataStandar.Add(y);
-            }
+            //    //Hết test
+            //    lstDataStandar.Add(x);
+            //    lstDataStandar.Add(y);
+            //}
 
-            Console.WriteLine("So Dong: " + lstDataStandar.Count);
-            return lstDataStandar;
-        }
+            //Console.WriteLine("So Dong: " + lstDataStandar.Count);
+            //return lstDataStandar;
+        //}
         static double DegreeToRadius(double Angle)
         {
             return (Angle * Math.PI) / 180;
         }
-        static public List<double> GetData()
+        
+        static public List<Map> GetData()
         {
-            List<Double> lstDuLieu = new List<double>();
+            //Danh sách các map mỗi lần wet
+            List<Map> lstMap = new List<Map>();
+            //Mỗi Map đơn vị: Chứa listdot
+            Map map = new Map();
+            lstMap.Add(map);
+            //Đọc file
             var fileStream = new FileStream("DuLieu.txt", FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
+                //đọc 3 line rác
+                string recycleLine;
+                for (int i = 0; i < 3; i++)
+                {
+                    streamReader.ReadLine();
+                }
+                //Start Get data
                 string line;
+                Dot newDot;
+                Dot oldDot = new Dot(-1,-1);
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     string[] data = line.Split(' ');
-                    foreach (string number in data)
+                    newDot = new Dot(Convert.ToDouble(data[0]), Convert.ToDouble(data[1]));
+                    
+                    if(newDot.Angle<oldDot.Angle &&(oldDot.Angle)>359)
                     {
-                        lstDuLieu.Add(Convert.ToDouble(number));
+                        //Qua map mới
+                        map = new Map();
+                        lstMap.Add(map);
+                        lstMap[lstMap.Count-1].lstDot.Add(newDot);
+                        oldDot = newDot;
                     }
+                    else //Ngay lần đầu làm việc ấy; nó đã vào đây. Cho đến khi đụng phần tử của map mới
+                    {
+                        //Bỏ vô Map hiện tại
+                        lstMap[lstMap.Count-1].lstDot.Add(newDot);
+                        oldDot = newDot;
+                    }
+                    
                 }
             }
-            return lstDuLieu;
+            return lstMap;
         }
        static List<double> RotateAxis180(List<double> lst)
         {
