@@ -72,8 +72,8 @@ namespace Lidar_Maps
             for (int i = 0; i < lstData.Count; i++)
             {
                 Console.WriteLine("Map: " + (i + 1).ToString());
-                //lstData[i].ShowGPS();
-                lstData[i].Show();
+                lstData[i].ShowGPS();
+                //lstData[i].Show();
 
                 Console.WriteLine();
             }

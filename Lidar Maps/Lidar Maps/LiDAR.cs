@@ -44,42 +44,59 @@ namespace Lidar_Maps
             Console.WriteLine("DelTop : " + DelTop + ", DelLeft : " + DelLeft + ", DelRight : " + DelRight);
             //Code mới
 
-            if(DelTop == 0) // Không đi thẳng
+            if (DelTop == 0) // Không đi thẳng
             {
                 if (DelLeft == 0 || DelRight == 0)
                 {
                     if (DelLeft == 0 && DelRight == 0) // đi thẳng
                     {
-
+                        this.top = newTop;
+                        this.left = newLeft;
+                        this.right = newRight;
                     }
                     else //Không làm, thay đổi địa hình
                     {
-
+                        this.top = newTop;
+                        this.left = this.left;
+                        this.right = this.right;
                     }
                 }
                 else
                 {
-                    if (DelLeft * DelRight < 0)
+                    if ((DelRight > -50 && DelRight < 50) && (DelLeft > -50 && DelLeft < 50))
                     {
-                        if (DelLeft < 0)
+                        if (DelLeft * DelRight < 0)
                         {
-                            DelLeft = DelLeft * -1;
-                            this.y = this.y - ((DelLeft + DelRight) / 2) * Map.Pis;
+
+                            if (DelLeft < 0)
+                            {
+                                DelLeft = DelLeft * -1;
+                                this.y = this.y - ((DelLeft + DelRight) / 2) * Map.Pis;
+                            }
+                            else
+                            {
+                                DelRight = DelRight * -1;
+                                this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
+                            }
+                            this.top = newTop;
+                            this.left = newLeft;
+                            this.right = newRight;
+                        
                         }
-                        else
+                        else //thay đổi địa hình
                         {
-                            DelRight = DelRight * -1;
-                            this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
+                            this.top = newTop;
+                            this.left = newLeft;
+                            this.right = newRight;
                         }
                     }
-                    else //thay đổi địa hình
+                    else
                     {
-
+                        this.top = newTop;
+                        this.left = this.left;
+                        this.right = this.right;
                     }
                 }
-                this.top = newTop;
-                this.left = newLeft;
-                this.right = newRight;
             }
             else // Có đi thẳng
             {
@@ -101,31 +118,51 @@ namespace Lidar_Maps
                 {
                     if(DelLeft == 0 && DelRight == 0) // đi thẳng
                     {
-
+                        this.top = newTop;
+                        this.left = newLeft;
+                        this.right = newRight;
                     }
-                    else //Không làm, thay đổi địa hình
+                    else //Không làm
                     {
-                        
+                        this.top = newTop;
+                        this.left = this.left;
+                        this.right = this.right;
                     }
                 }
                 else
                 {
-                    if(DelLeft*DelRight < 0)
+                    if (DelRight >= -50 && DelRight <= 50 && DelLeft >= -50 && DelLeft <= 50)
                     {
-                        if(DelLeft < 0)
+                        if (DelLeft * DelRight < 0)
                         {
-                            DelLeft = DelLeft * -1;
-                            this.y = this.y - ((DelLeft + DelRight)/2) * Map.Pis;
+
+                            if (DelLeft < 0)
+                            {
+                                DelLeft = DelLeft * -1;
+                                this.y = this.y - ((DelLeft + DelRight) / 2) * Map.Pis;
+                            }
+                            else
+                            {
+                                DelRight = DelRight * -1;
+                                this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
+                            }
+
+                            this.top = newTop;
+                            this.left = newLeft;
+                            this.right = newRight;
                         }
-                        else
+                        else //thay đổi địa hình
                         {
-                            DelRight = DelRight * -1;
-                            this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
+                            this.top = newTop;
+                            this.left = this.left;
+                            this.right = this.right;
                         }
                     }
-                    else //thay đổi địa hình
+                    else
                     {
-
+                        this.top = newTop;
+                        this.left = this.left;
+                        this.right = this.right;
                     }
                 }
             }
