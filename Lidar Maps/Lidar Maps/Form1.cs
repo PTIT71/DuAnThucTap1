@@ -22,6 +22,7 @@ namespace Lidar_Maps
         Timer tm = new Timer();
         Map OriginMap = new Map();
         Map CurrentMap = new Map();
+        LiDAR liDAR = new LiDAR(400, 400);
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -34,20 +35,33 @@ namespace Lidar_Maps
          
             List<Map> lstData = DATA.GetData();
             OriginMap = lstData[0];
+            liDAR.setGPS(lstData[0].GetGPS().top, lstData[0].GetGPS().left, lstData[0].GetGPS().right);
             for (int i = 0; i < lstData.Count; i++)
             {
+                //if (lstData[i].GetGPS().top != 0 && lstData[i].GetGPS().left != 0 && lstData[i].GetGPS().right != 0)
+                //{
+                //    //Tính độ dịch
+                //    double DelTop = lstData[i].GetGPS().top - OriginMap.GetGPS().top;
+                //    double DelRight = lstData[i].GetGPS().right - OriginMap.GetGPS().right; ;
+                //    double DelLeft = lstData[i].GetGPS().left - OriginMap.GetGPS().left;
+
+                //    //Console.WriteLine("deltop: " + DelTop);
+                //    //Vẽ
+                //    // Console.WriteLine("Map " + i);
+                //    lstData[i].DrawMap(g, DelTop, DelRight, DelLeft);
+                //    // lstData[i].DrawGPS(g);
+                //    SolidBrush brs = new SolidBrush(Color.Black);
+                //    g.DrawString("MAP: " + (i - 1), new Font("Arial", 16), brs, 0, 0);
+                //    SolidBrush br = new SolidBrush(Color.Yellow);
+                //    g.DrawString("MAP: " + i, new Font("Arial", 16), br, 0, 0);
+                //}
                 if (lstData[i].GetGPS().top != 0 && lstData[i].GetGPS().left != 0 && lstData[i].GetGPS().right != 0)
                 {
-                    //Tính độ dịch
-                    double DelTop = lstData[i].GetGPS().top - OriginMap.GetGPS().top;
-                    double DelRight = lstData[i].GetGPS().right - OriginMap.GetGPS().right; ;
-                    double DelLeft = lstData[i].GetGPS().left - OriginMap.GetGPS().left;
-                    
-                    //Console.WriteLine("deltop: " + DelTop);
+                    Console.WriteLine("Map: " + (i + 1).ToString());
+                    liDAR.Update(lstData[i].GetGPS().top, lstData[i].GetGPS().left, lstData[i].GetGPS().right);
+                    lstData[i].DrawMap(g, liDAR);
+                    liDAR.drawLiDAR(g);
                     //Vẽ
-                    // Console.WriteLine("Map " + i);
-                    lstData[i].DrawMap(g, DelTop, DelRight, DelLeft);
-                    // lstData[i].DrawGPS(g);
                     SolidBrush brs = new SolidBrush(Color.Black);
                     g.DrawString("MAP: " + (i - 1), new Font("Arial", 16), brs, 0, 0);
                     SolidBrush br = new SolidBrush(Color.Yellow);
