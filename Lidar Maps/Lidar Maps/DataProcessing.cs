@@ -10,6 +10,7 @@ namespace Lidar_Maps
 {
     class DataProcessing
     {
+        public bool IsReadFile = false;
         //Lấy dữ liệu từ file lên mảng chứa:
         public List<Map> GetData()
         {
@@ -22,38 +23,116 @@ namespace Lidar_Maps
             var fileStream = new FileStream(Form1.fileName, FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
-                //đọc 3 line rác
-                for (int i = 0; i < 3; i++)
-                {
-                    streamReader.ReadLine();
-                }
+                ////đọc 3 line rác
+                //for (int i = 0; i < 3; i++)
+                //{
+                //    streamReader.ReadLine();
+                //}
+                ////Start Get data
+                //string line;
+                //Dot newDot;
+                //Dot oldDot = new Dot(-1, -1);
+                //while ((line = streamReader.ReadLine()) != null)
+                //{
+                //    string[] data = line.Split(' ');
+                //    newDot = new Dot(Convert.ToDouble(data[0]), Convert.ToDouble(data[1]));
+
+                //    if (newDot.Angle < oldDot.Angle && ((oldDot.Angle) >= (359))&&(newDot.Angle <= 2)) // -90 quay hình
+                //    {
+                //        //Qua map mới
+                //        map = new Map();
+                //        lstMap.Add(map);
+                //        lstMap[lstMap.Count - 1].lstDot.Add(newDot);
+                //        oldDot = newDot;
+                //    }
+                //    else //Ngay lần đầu làm việc ấy; nó đã vào đây. Cho đến khi đụng phần tử của map mới
+                //    {
+                //        //Bỏ vô Map hiện tại
+                //        lstMap[lstMap.Count - 1].lstDot.Add(newDot);
+                //        oldDot = newDot;
+                //    }
+
+                //}
+
                 //Start Get data
+                //Ngay từ đầu vào đã cho đọc rồi
                 string line;
-                Dot newDot;
+                Dot newDot = new Dot(-1,-1);
                 Dot oldDot = new Dot(-1, -1);
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     string[] data = line.Split(' ');
-                    newDot = new Dot(Convert.ToDouble(data[0]), Convert.ToDouble(data[1]));
+                    if (IsReadFile)
+                    {
+                        newDot = new Dot(Convert.ToDouble(data[0]), Convert.ToDouble(data[1]));
+                        if (newDot.Angle < oldDot.Angle && ((oldDot.Angle) >= (359)) && (newDot.Angle <= 2)) // -90 quay hình
+                        {
+                            //Qua map mới
+                            map = new Map();
+                            lstMap.Add(map);
+                            lstMap[lstMap.Count - 1].lstDot.Add(newDot);
+                            oldDot = newDot;
+                        }
+                        else //Ngay lần đầu làm việc ấy; nó đã vào đây. Cho đến khi đụng phần tử của map mới
+                        {
+                            //Bỏ vô Map hiện tại
+                            lstMap[lstMap.Count - 1].lstDot.Add(newDot);
+                            oldDot = newDot;
+                        }
+                    }
+                    else
+                    {
+                        if(CheckDataValid(line))
+                        {
+                            data = line.Split(' ');
+                            newDot = new Dot(Convert.ToDouble(data[0]), Convert.ToDouble(data[1]));
+                            if (newDot.Angle < oldDot.Angle && ((oldDot.Angle) >= (359)) && (newDot.Angle <= 2)) // -90 quay hình
+                            {
+                                //Qua map mới
+                                map = new Map();
+                                lstMap.Add(map);
+                                lstMap[lstMap.Count - 1].lstDot.Add(newDot);
+                                oldDot = newDot;
+                            }
+                            else //Ngay lần đầu làm việc ấy; nó đã vào đây. Cho đến khi đụng phần tử của map mới
+                            {
+                                //Bỏ vô Map hiện tại
+                                lstMap[lstMap.Count - 1].lstDot.Add(newDot);
+                                oldDot = newDot;
+                            }
+                            IsReadFile = true;
 
-                    if (newDot.Angle < oldDot.Angle && ((oldDot.Angle) >= (359))&&(newDot.Angle <= 2)) // -90 quay hình
-                    {
-                        //Qua map mới
-                        map = new Map();
-                        lstMap.Add(map);
-                        lstMap[lstMap.Count - 1].lstDot.Add(newDot);
-                        oldDot = newDot;
+                        }
                     }
-                    else //Ngay lần đầu làm việc ấy; nó đã vào đây. Cho đến khi đụng phần tử của map mới
-                    {
-                        //Bỏ vô Map hiện tại
-                        lstMap[lstMap.Count - 1].lstDot.Add(newDot);
-                        oldDot = newDot;
-                    }
+                   
+
+                  
 
                 }
+
+
             }
+            IsReadFile = false;
             return lstMap;
+        }
+
+        public bool CheckDataValid(string Line)
+        {
+            try
+            {
+                string []data = Line.Split(' ');
+                Dot newDot = new Dot(Convert.ToDouble(data[0]), Convert.ToDouble(data[1]));
+
+                if((int)newDot.Angle == 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
         /*
         public List<double> standarData()

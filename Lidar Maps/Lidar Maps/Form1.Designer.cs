@@ -49,7 +49,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1005, 70);
+            this.button1.Location = new System.Drawing.Point(1005, 74);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 38);
             this.button1.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(1005, 163);
+            this.trackBar1.Location = new System.Drawing.Point(1005, 166);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(135, 45);
             this.trackBar1.TabIndex = 2;
@@ -68,7 +68,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1005, 116);
+            this.button2.Location = new System.Drawing.Point(1005, 118);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(135, 41);
             this.button2.TabIndex = 3;
@@ -91,7 +91,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1011, 214);
+            this.label1.Location = new System.Drawing.Point(1005, 214);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 20);
             this.label1.TabIndex = 5;

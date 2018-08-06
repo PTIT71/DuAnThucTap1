@@ -41,7 +41,7 @@ namespace Lidar_Maps
             double DelTop = newTop - this.top;
             double DelLeft = newLeft - this.left;
             double DelRight = newRight - this.right;
-            Console.WriteLine("DelTop : " + DelTop + ", DelLeft : " + DelLeft + ", DelRight : " + DelRight);
+         ///   Console.WriteLine("DelTop : " + DelTop + ", DelLeft : " + DelLeft + ", DelRight : " + DelRight);
             //Code mới
 
             if (DelTop == 0) // Không đi thẳng
@@ -100,7 +100,7 @@ namespace Lidar_Maps
             }
             else // Có đi thẳng
             {
-                if (DelTop > -50)
+                if (DelTop > -50)//Tại sao ở đây là -50 nhỉ... Có thể do ramdom.
                 {
                     this.x = this.x - DelTop * Map.Pis; // đi thẳng
 
@@ -108,13 +108,13 @@ namespace Lidar_Maps
                     this.left = newLeft;
                     this.right = newRight;
                 }
-                else
+                else 
                 {
                     this.top = this.top;
                     this.left = newLeft;
                     this.right = newRight;
                 }
-                if(DelLeft == 0 || DelRight == 0)
+                if(DelLeft == 0 || DelRight == 0) 
                 {
                     if(DelLeft == 0 && DelRight == 0) // đi thẳng
                     {
