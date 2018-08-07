@@ -26,7 +26,10 @@ namespace Lidar_Maps
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            liDAR = new LiDAR(400, 400);
+
+            liDAR.top = liDAR.left = liDAR.right = 0;
+
            
             panel1.Refresh();
             DataProcessing DATA = new DataProcessing();
@@ -58,12 +61,13 @@ namespace Lidar_Maps
                 if (lstData[i].GetGPS().top != 0 && lstData[i].GetGPS().left != 0 && lstData[i].GetGPS().right != 0)
                 {
                     Console.WriteLine("Map: " + (i + 1).ToString());
+                    lstData[i].ShowGPS();
                     liDAR.Update(lstData[i].GetGPS().top, lstData[i].GetGPS().left, lstData[i].GetGPS().right);
                     lstData[i].DrawMap(g, liDAR);
                     liDAR.drawLiDAR(g);
                     //Vẽ
                     SolidBrush brs = new SolidBrush(Color.Black);
-                    g.DrawString("MAP: " + (i - 1), new Font("Arial", 16), brs, 0, 0);
+                    g.FillRectangle(brs, new Rectangle(0, 0, 100, 30));
                     SolidBrush br = new SolidBrush(Color.Yellow);
                     g.DrawString("MAP: " + i, new Font("Arial", 16), br, 0, 0);
                 }

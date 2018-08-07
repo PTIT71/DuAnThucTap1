@@ -75,17 +75,17 @@ namespace Lidar_Maps
                 lstDot[i].y = lstDot[i].y * Pis;
 
                 lstDot[i].x += liDAR.x;
-                lstDot[i].y += liDAR.y;
+                lstDot[i].y = liDAR.y - lstDot[i].y;
 
                 //Xoay 90 do
 
-                //  double X = lstDot[i].y;
-                //  double Y = (-lstDot[i].x)+800;
+                  //double X = lstDot[i].y;
+                  //double Y = -lstDot[i].x-00;
 
                 //Console.WriteLine(X + "  " + Y);
                 Pen p = new Pen(Color.GreenYellow);
                 g.DrawLine(new Pen(Color.Red, 2), (int)lstDot[i].x, (int)lstDot[i].y, (int)lstDot[i].x + 1, (int)lstDot[i].y);
-                // g.DrawLine(p, (int)X, (int)Y, (int)X + 1, (int)Y);
+                 //g.DrawLine(p, (int)X, (int)Y, (int)X + 1, (int)Y);
             }
         }
             //public void DrawMap(Graphics g, double DeltaTop, double DeltaRight, double DeltaLeft)

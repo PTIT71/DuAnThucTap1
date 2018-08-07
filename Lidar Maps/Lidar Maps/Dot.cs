@@ -26,6 +26,7 @@ namespace Lidar_Maps
             this.x = dist * Math.Sin(DegreeToRadius(Angle));
             this.y = dist * Math.Cos(DegreeToRadius(Angle));
 
+
         }
         static double DegreeToRadius(double Angle)
         {

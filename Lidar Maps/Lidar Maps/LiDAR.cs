@@ -41,103 +41,131 @@ namespace Lidar_Maps
             double DelTop = newTop - this.top;
             double DelLeft = newLeft - this.left;
             double DelRight = newRight - this.right;
-            Console.WriteLine("LiDAR : Top : " + top + ", Left : " + left + ", Right : " + right);
-            Console.WriteLine("DelTop : " + DelTop + ", DelLeft : " + DelLeft + ", DelRight : " + DelRight);
-            //Code mới
-
-            if(DelTop == 0)
-            {
-                if(DelLeft<0 && DelRight > 0) // Đi qua trái
+              Console.WriteLine("DelTop : " + DelTop + ", DelLeft : " + DelLeft + ", DelRight : " + DelRight);
+           
+                // Deltop=0
+                if (DelTop == 0)  // -3 hay 3 là độ sai số
                 {
-                    this.x += DelLeft;
-                    this.left = newLeft;
-                    this.right = newRight;
-                }
-                else
-                {
-                    if(DelLeft>0 && DelRight<0) //Đi qua phải
+                    //Qua Trái
+                    if (DelLeft < 0 && DelRight > 0)
                     {
-                        this.x -= DelRight;
-                        this.left = newLeft;
+                        this.x += DelLeft * Map.Pis;
+                        // this.y += DelTop * Map.Pis; /// nhẽ rea không cần thiết nhưng vì do sai số
+
+                        this.top = newTop;
                         this.right = newRight;
-                    }
-                    else // TH này chưa tính tới
-                    {
-
-                    }
-                }
-            }
-            else
-            {
-                if(DelTop > -20 && DelTop < 20) // Đi thẳng
-                {
-                    if(DelLeft == 0 || DelRight == 0)
-                    {
-                        if(DelLeft ==0 && DelRight ==0)
-                        {
-                            this.y += DelTop;
-                            this.top = newTop;
-                        }
-                        else // TH này chưa tính tới // TH vật cản
-                        {
-
-                        }
-                    }
-                    else // DelLeft != 0 && DelRight != 0
-                    {
-                        if (DelLeft < 0 && DelRight > 0) // Đi qua trái
-                        {
-                            this.y += DelTop;
-                            this.top = newTop;
-
-                            this.x += DelLeft;
-                            this.left = newLeft;
-                            this.right = newRight;
-                        }
-                        else
-                        {
-                            if (DelLeft > 0 && DelRight < 0) //Đi qua phải
-                            {
-                                this.y += DelTop;
-                                this.top = newTop;
-
-                                this.x -= DelRight;
-                                this.left = newLeft;
-                                this.right = newRight;
-                            }
-                            else // TH này chưa tính tới
-                            {
-
-                            }
-                        }
-                    }
-                }
-                else // (DelTop <= -20 || DelTop >= 20)
-                {
-                    if (DelLeft < 0 && DelRight > 0) // Đi qua trái
-                    {
-                        this.x += DelLeft;
                         this.left = newLeft;
-                        this.right = newRight;
                     }
                     else
                     {
-                        if (DelLeft > 0 && DelRight < 0) //Đi qua phải
+                        //Qua Phải
+                        if (DelLeft > 0 && DelRight < 0)
                         {
-                            this.x -= DelRight;
-                            this.left = newLeft;
-                            this.right = newRight;
-                        }
-                        else // TH này chưa tính tới
-                        {
+                            this.x -= DelRight * Map.Pis;
+                            //   this.y += DelTop * Map.Pis; /// nhẽ rea không cần thiết nhưng vì do sai số
 
+                            this.top = newTop;
+                            this.right = newRight;
+                            this.left = newLeft;
+                        }
+                        // còn lại là cho đứng yên hết Đứng yên (Delleft=0 && Delright =0)
+                        else
+                        {
+                            this.right = newRight;
+                            this.left = newLeft;
+                            Console.WriteLine("Đứng yên");
+                        }
+
+                    }
+                }
+                else
+                {
+                    //  (-) Giới hạnh vật cản < Deltop < (+) Giới hạn vật cản
+                    if (DelTop > -50 && DelTop < 50)
+                    {
+                        //Tiến Trái
+                        if (DelTop < 0 && DelRight > 0 && DelLeft < 0)
+                        {
+                            this.x += DelLeft * Map.Pis;
+                            this.y += DelTop * Map.Pis;
+
+                            this.top = newTop;
+                            this.right = newRight;
+                            this.left = newLeft;
+                            Console.WriteLine("Thẳng-Trái");
+                        }
+                        else
+                        {
+                            //Lùi Trái
+                            if (DelTop > 0 && DelRight > 0 && DelLeft < 0)
+                            {
+                                this.x += DelLeft * Map.Pis;
+                                this.y += DelTop * Map.Pis;
+
+                                this.top = newTop;
+                                this.right = newRight;
+                                this.left = newLeft;
+                                Console.WriteLine("Lùi phải");
+                            }
+                            else
+                            {
+                                //Đi Thẳng && Đi Lùi
+                                if (DelLeft == 0 && DelRight == 0)
+                                {
+                                    this.y += DelTop * Map.Pis;
+
+                                    this.top = newTop;
+                                    this.right = newRight;
+                                    this.left = newLeft;
+                                    Console.WriteLine("Thẳng");
+                                }
+                                else
+                                {
+                                    //Tiến Phải
+                                    if (DelTop < 0 && DelRight < 0 && DelLeft > 0)
+                                    {
+                                        this.x -= DelRight * Map.Pis;
+                                        this.y += DelTop * Map.Pis;
+
+                                        this.top = newTop;
+                                        this.right = newRight;
+                                        this.left = newLeft;
+                                        Console.WriteLine("Tiến phải");
+                                    }
+                                    else
+                                    {
+                                        //Lùi Phải
+                                        if (DelTop > 0 && DelRight < 0 && DelLeft > 0)
+                                        {
+                                            this.x -= DelRight * Map.Pis;
+                                            this.y += DelTop * Map.Pis;
+
+                                            this.top = newTop;
+                                            this.right = newRight;
+                                            this.left = newLeft;
+                                            Console.WriteLine("Lùi Phải");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        //  Deltop < (-) Giới Hạn Vật Cản, Deltop > (+) Giới hạn vật cản
+                        if (DelTop < -50 || DelTop > 50)
+                        {
+                            //Vật cản trái
+
+                            //Vật cản phải
                         }
                     }
                 }
-            }
-
-
-            
+           
+               
+           
         }
     }
 }
