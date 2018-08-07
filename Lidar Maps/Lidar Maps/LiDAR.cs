@@ -43,126 +43,173 @@ namespace Lidar_Maps
             double DelRight = newRight - this.right;
             Console.WriteLine("DelTop : " + DelTop + ", DelLeft : " + DelLeft + ", DelRight : " + DelRight);
             //Code mới
-
-            if (DelTop == 0) // Không đi thẳng
+            // --------------------------------------------------------------------------------------------------------------
+            if (DelTop == 0) // LiDAR di chuyển qua trái || phải
             {
-                if (DelLeft == 0 || DelRight == 0)
+                if(DelLeft == 0 || DelRight == 0)
                 {
-                    if (DelLeft == 0 && DelRight == 0) // đi thẳng
+                    if(DelLeft == 0 && DelRight == 0) // LiDAR không di chuyển // DelTop == 0 && DelLeft == 0 && DelRight == 0
                     {
-                        this.top = newTop;
-                        this.left = newLeft;
-                        this.right = newRight;
+
                     }
-                    else //Không làm, thay đổi địa hình
+                    else // DelLeft == 0 || DelRight == 0
                     {
-                        this.top = newTop;
-                        this.left = this.left;
-                        this.right = this.right;
+                        if(DelLeft == 0) // DelRight != 0 // Có thể có vật cản bên phải
+                        {
+                            if(DelRight < -20 || DelRight > 20) // Trường hợp là vật cản bên phải
+                            {
+
+                            }
+                            else // Đây là trường hợp rung lắc
+                            {
+
+                            }
+                        }
+                        else // DelRight == 0 && DelLeft != 0 // Có thể có vật cản bên trái
+                        {
+                            if (DelLeft < -20 || DelLeft > 20) // Trường hợp là vật cản bên trái
+                            {
+
+                            }
+                            else // Đây là trường hợp rung lắc
+                            {
+
+                            }
+                        }
                     }
                 }
-                else
+                else // DelLeft != 0 && DelRight != 0 && DelTop == 0
                 {
-                    if ((DelRight > -50 && DelRight < 50) && (DelLeft > -50 && DelLeft < 50))
+                    if ((DelLeft >= -20 && DelLeft <= 20) || (DelRight >= -20 && DelRight <= 20))
                     {
-                        if (DelLeft * DelRight < 0)
+                        if((DelLeft >= -20 && DelLeft <= 20) && (DelRight >= -20 && DelRight <= 20))
                         {
 
-                            if (DelLeft < 0)
-                            {
-                                DelLeft = DelLeft * -1;
-                                this.y = this.y - ((DelLeft + DelRight) / 2) * Map.Pis;
-                            }
-                            else
-                            {
-                                DelRight = DelRight * -1;
-                                this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
-                            }
-                            this.top = newTop;
-                            this.left = newLeft;
-                            this.right = newRight;
-                        
                         }
-                        else //thay đổi địa hình
+                        else
                         {
-                            this.top = newTop;
-                            this.left = newLeft;
-                            this.right = newRight;
+                            if(DelLeft >= -20 && DelLeft <= 20) // DelRight < -20 || DelRight > 20 // Di chuyển trái,có vật cản bên phải
+                            {
+
+                            }
+                            else // DelRight >= -20 && DelRight <= 20 && (DelLeft < -20 || DelLeft > 20) // Di chuyển bên phải, có vật cản bên trái
+                            {
+
+                            }
                         }
                     }
-                    else
+                    else // (DelLeft < -20 || DelLeft > 20) && (DelRight < -20 || DelRight > 20) // Có vật cản 2 bên
                     {
-                        this.top = newTop;
-                        this.left = this.left;
-                        this.right = this.right;
+                        
                     }
                 }
             }
-            else // Có đi thẳng
+            else
             {
-                if (DelTop > -50)
+// --------------------------------------------------------------------------------------------------------------
+                if(DelTop >= -20 && DelTop <= 20)
                 {
-                    this.x = this.x - DelTop * Map.Pis; // đi thẳng
-
-                    this.top = newTop;
-                    this.left = newLeft;
-                    this.right = newRight;
-                }
-                else
-                {
-                    this.top = this.top;
-                    this.left = newLeft;
-                    this.right = newRight;
-                }
-                if(DelLeft == 0 || DelRight == 0)
-                {
-                    if(DelLeft == 0 && DelRight == 0) // đi thẳng
+                    if (DelLeft == 0 || DelRight == 0)
                     {
-                        this.top = newTop;
-                        this.left = newLeft;
-                        this.right = newRight;
-                    }
-                    else //Không làm
-                    {
-                        this.top = newTop;
-                        this.left = this.left;
-                        this.right = this.right;
-                    }
-                }
-                else
-                {
-                    if (DelRight >= -50 && DelRight <= 50 && DelLeft >= -50 && DelLeft <= 50)
-                    {
-                        if (DelLeft * DelRight < 0)
+                        if (DelLeft == 0 && DelRight == 0) // LiDAR di chuyển tiến/lùi thẳng // DelTop >= -20 && DelTop <= 20 && DelLeft == 0 && DelRight == 0
                         {
 
-                            if (DelLeft < 0)
+                        }
+                        else // (DelLeft == 0 && DelRight != 0) || (DelRight == 0 && DelLeft != 0) && (DelTop >= -20 && DelTop <= 20)
+                        // TH :
+                        //- Đi thẳng, gặp vật cản trái
+                        //- Đi thẳng, gặp vật cản phải
+                        {
+                            if (DelLeft == 0) // DelRight != 0 // Có thể có vật cản bên phải
                             {
-                                DelLeft = DelLeft * -1;
-                                this.y = this.y - ((DelLeft + DelRight) / 2) * Map.Pis;
+                                if (DelRight < -20 || DelRight > 20) // Trường hợp đi thẳng, gặp vật cản bên phải
+                                                                     // (DelTop >= -20 && DelTop <= 20) && DelLeft == 0 && ( DelRight < -20 || DelRight > 20 )
+                                {
+
+                                }
+                                else // Đây là trường hợp rung lắc
+                                {
+                                    // Trường hợp này bỏ qua
+                                }
+                            }
+                            else // DelRight == 0 && DelLeft != 0 // Có thể có vật cản bên trái
+                            {
+                                if (DelLeft < -20 || DelLeft > 20) // Trường hợp đi thẳng, gặp vật cản bên trái
+                                                                   // (DelTop >= -20 && DelTop <= 20) && DelRight == 0 && ( DelLeft < -20 || DelLeft > 20 )
+                                {
+
+                                }
+                                else // Đây là trường hợp rung lắc
+                                {
+                                    // Trường hợp này bỏ qua
+                                }
+                            }
+                        }
+                    }
+                    else // DelLeft != 0 && DelRight != 0 && ( DelTop >= -20 && DelTop <= 20 )
+                    // TH:
+                    // - Đi thẳng, gặp vật cản 2 bên // TH : lòi ra || thụt vô 
+                    // - Đi thẳng, qua trái , gặp vật cản phải
+                    // - Đi thẳng, qua phải , gặp vật cản trái
+                    // - ? Đi thẳng, qua trái, gặp vật cản trái
+                    // - ? Đi thẳng, qua phải, gặp vật cản trái
+                    {
+                        if ((DelLeft >= -20 && DelLeft <= 20) || (DelRight >= -20 && DelRight <= 20))
+                        {
+                            if ((DelLeft >= -20 && DelLeft <= 20) && (DelRight >= -20 && DelRight <= 20)) //&& && ( DelTop >= -20 && DelTop <= 20 )
+                                // TH : - đi thẳng xiên quá trái hoặc phải
+                            {
+                                if(DelLeft < 0 && DelRight > 0) // Chương trình qua trái
+                                {
+
+                                }
+                                else
+                                {
+                                    if(DelRight > 0 && DelLeft < 0) // Chương trình qua phải
+                                    {
+
+                                    }
+                                    else // TH : - DelLeft, DelRight cùng lớn hơn hoặc nhỏ hơn 0 // Không phải trường hợp VC // Không phải trường hợp VC 2 bên // Có thể do rung lắc
+                                    {
+
+                                    }
+                                }
                             }
                             else
                             {
-                                DelRight = DelRight * -1;
-                                this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
-                            }
+                                if (DelLeft >= -20 && DelLeft <= 20) // DelRight < -20 || DelRight > 20 // Di chuyển trái,có vật cản bên phải
+                                {
 
-                            this.top = newTop;
-                            this.left = newLeft;
-                            this.right = newRight;
+                                }
+                                else // DelRight >= -20 && DelRight <= 20 && (DelLeft < -20 || DelLeft > 20) // Di chuyển bên phải, có vật cản bên trái
+                                {
+
+                                }
+                            }
                         }
-                        else //thay đổi địa hình
+                        else // (DelLeft < -20 || DelLeft > 20) && (DelRight < -20 || DelRight > 20) && ( DelTop >= -20 && DelTop <= 20 ) // Có vật cản 2 bên
                         {
-                            this.top = newTop;
-                            this.left = this.left;
-                            this.right = this.right;
+
                         }
+                    }
+                }
+// --------------------------------------------------------------------------------------------------------------
+                else // DelTop < -20 || DelTop > 20 // Trường hợp vật cản || Qua trái , phải có vật cản phía trên
+                {
+                    if (DelLeft < 0 && DelRight > 0) // Chương trình qua trái
+                    {
+
                     }
                     else
                     {
-                        this.top = newTop;
-                        this.left = this.left;
-                        this.right = this.right;
+                        if (DelRight > 0 && DelLeft < 0) // Chương trình qua phải
+                        {
+
+                        }
+                        else // TH : - DelLeft, DelRight cùng lớn hơn hoặc nhỏ hơn 0 // Không phải trường hợp VC 2 bên // Có thể do rung lắc
+                        {
+
+                        }
                     }
                 }
             }
