@@ -41,128 +41,97 @@ namespace Lidar_Maps
             double DelTop = newTop - this.top;
             double DelLeft = newLeft - this.left;
             double DelRight = newRight - this.right;
-         ///   Console.WriteLine("DelTop : " + DelTop + ", DelLeft : " + DelLeft + ", DelRight : " + DelRight);
+            Console.WriteLine("LiDAR : Top : " + top + ", Left : " + left + ", Right : " + right);
+            Console.WriteLine("DelTop : " + DelTop + ", DelLeft : " + DelLeft + ", DelRight : " + DelRight);
             //Code mới
 
-            if (DelTop == 0) // Không đi thẳng
+            if(DelTop == 0)
             {
-                if (DelLeft == 0 || DelRight == 0)
+                if(DelLeft<0 && DelRight > 0) // Đi qua trái
                 {
-                    if (DelLeft == 0 && DelRight == 0) // đi thẳng
-                    {
-                        this.top = newTop;
-                        this.left = newLeft;
-                        this.right = newRight;
-                    }
-                    else //Không làm, thay đổi địa hình
-                    {
-                        this.top = newTop;
-                        this.left = this.left;
-                        this.right = this.right;
-                    }
+                    this.x += DelLeft;
+                    this.left = newLeft;
+                    this.right = newRight;
                 }
                 else
                 {
-                    if ((DelRight > -50 && DelRight < 50) && (DelLeft > -50 && DelLeft < 50))
+                    if(DelLeft>0 && DelRight<0) //Đi qua phải
                     {
-                        if (DelLeft * DelRight < 0)
-                        {
-
-                            if (DelLeft < 0)
-                            {
-                                DelLeft = DelLeft * -1;
-                                this.y = this.y - ((DelLeft + DelRight) / 2) * Map.Pis;
-                            }
-                            else
-                            {
-                                DelRight = DelRight * -1;
-                                this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
-                            }
-                            this.top = newTop;
-                            this.left = newLeft;
-                            this.right = newRight;
-                        
-                        }
-                        else //thay đổi địa hình
-                        {
-                            this.top = newTop;
-                            this.left = newLeft;
-                            this.right = newRight;
-                        }
+                        this.x -= DelRight;
+                        this.left = newLeft;
+                        this.right = newRight;
                     }
-                    else
+                    else // TH này chưa tính tới
                     {
-                        this.top = newTop;
-                        this.left = this.left;
-                        this.right = this.right;
+
                     }
                 }
             }
-            else // Có đi thẳng
+            else
             {
-                if (DelTop > -50)//Tại sao ở đây là -50 nhỉ... Có thể do ramdom.
+                if(DelTop > -20 && DelTop < 20) // Đi thẳng
                 {
-                    this.x = this.x - DelTop * Map.Pis; // đi thẳng
-
-                    this.top = newTop;
-                    this.left = newLeft;
-                    this.right = newRight;
-                }
-                else 
-                {
-                    this.top = this.top;
-                    this.left = newLeft;
-                    this.right = newRight;
-                }
-                if(DelLeft == 0 || DelRight == 0) 
-                {
-                    if(DelLeft == 0 && DelRight == 0) // đi thẳng
+                    if(DelLeft == 0 || DelRight == 0)
                     {
-                        this.top = newTop;
-                        this.left = newLeft;
-                        this.right = newRight;
-                    }
-                    else //Không làm
-                    {
-                        this.top = newTop;
-                        this.left = this.left;
-                        this.right = this.right;
-                    }
-                }
-                else
-                {
-                    if (DelRight >= -50 && DelRight <= 50 && DelLeft >= -50 && DelLeft <= 50)
-                    {
-                        if (DelLeft * DelRight < 0)
+                        if(DelLeft ==0 && DelRight ==0)
+                        {
+                            this.y += DelTop;
+                            this.top = newTop;
+                        }
+                        else // TH này chưa tính tới // TH vật cản
                         {
 
-                            if (DelLeft < 0)
-                            {
-                                DelLeft = DelLeft * -1;
-                                this.y = this.y - ((DelLeft + DelRight) / 2) * Map.Pis;
-                            }
-                            else
-                            {
-                                DelRight = DelRight * -1;
-                                this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
-                            }
-
+                        }
+                    }
+                    else // DelLeft != 0 && DelRight != 0
+                    {
+                        if (DelLeft < 0 && DelRight > 0) // Đi qua trái
+                        {
+                            this.y += DelTop;
                             this.top = newTop;
+
+                            this.x += DelLeft;
                             this.left = newLeft;
                             this.right = newRight;
                         }
-                        else //thay đổi địa hình
+                        else
                         {
-                            this.top = newTop;
-                            this.left = this.left;
-                            this.right = this.right;
+                            if (DelLeft > 0 && DelRight < 0) //Đi qua phải
+                            {
+                                this.y += DelTop;
+                                this.top = newTop;
+
+                                this.x -= DelRight;
+                                this.left = newLeft;
+                                this.right = newRight;
+                            }
+                            else // TH này chưa tính tới
+                            {
+
+                            }
                         }
+                    }
+                }
+                else // (DelTop <= -20 || DelTop >= 20)
+                {
+                    if (DelLeft < 0 && DelRight > 0) // Đi qua trái
+                    {
+                        this.x += DelLeft;
+                        this.left = newLeft;
+                        this.right = newRight;
                     }
                     else
                     {
-                        this.top = newTop;
-                        this.left = this.left;
-                        this.right = this.right;
+                        if (DelLeft > 0 && DelRight < 0) //Đi qua phải
+                        {
+                            this.x -= DelRight;
+                            this.left = newLeft;
+                            this.right = newRight;
+                        }
+                        else // TH này chưa tính tới
+                        {
+
+                        }
                     }
                 }
             }
