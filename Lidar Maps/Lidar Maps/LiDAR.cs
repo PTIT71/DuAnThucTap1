@@ -26,7 +26,9 @@ namespace Lidar_Maps
 
         public void drawLiDAR(Graphics g)
         {
-            g.FillRectangle(new SolidBrush(Color.Orange), (float)x - 1, (float)y - 1, 2, 2);
+            double X = this.y;
+            double Y = (-this.x) + 800;
+            g.FillRectangle(new SolidBrush(Color.Orange), (float)X - 2, (float)Y - 2, 4, 4);
         }
 
         public void setGPS(double top,double left,double right)
@@ -100,31 +102,25 @@ namespace Lidar_Maps
             }
             else // Có đi thẳng
             {
-                if (DelTop > -50)//Tại sao ở đây là -50 nhỉ... Có thể do ramdom.
+                if (DelTop >= -50 && DelTop <= 50)//Tại sao ở đây là -50 nhỉ... Có thể do ramdom.
                 {
                     this.x = this.x - DelTop * Map.Pis; // đi thẳng
 
                     this.top = newTop;
-                    this.left = newLeft;
-                    this.right = newRight;
                 }
                 else 
                 {
                     this.top = this.top;
-                    this.left = newLeft;
-                    this.right = newRight;
                 }
                 if(DelLeft == 0 || DelRight == 0) 
                 {
                     if(DelLeft == 0 && DelRight == 0) // đi thẳng
                     {
-                        this.top = newTop;
                         this.left = newLeft;
                         this.right = newRight;
                     }
                     else //Không làm
                     {
-                        this.top = newTop;
                         this.left = this.left;
                         this.right = this.right;
                     }
@@ -147,20 +143,17 @@ namespace Lidar_Maps
                                 this.y = this.y + ((DelLeft + DelRight) / 2) * Map.Pis;
                             }
 
-                            this.top = newTop;
                             this.left = newLeft;
                             this.right = newRight;
                         }
                         else //thay đổi địa hình
                         {
-                            this.top = newTop;
                             this.left = this.left;
                             this.right = this.right;
                         }
                     }
                     else
                     {
-                        this.top = newTop;
                         this.left = this.left;
                         this.right = this.right;
                     }

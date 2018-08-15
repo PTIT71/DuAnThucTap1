@@ -61,10 +61,7 @@ namespace Lidar_Maps
         public static double Pis = 0.5;
         public void DrawGPS(Graphics g)
         {
-          
-            //  
             Console.WriteLine("TOP: " + G.top + "  LEFT: " + G.left + "  RIGHT: " + G.right);
-
         }
         public void DrawMap(Graphics g, LiDAR liDAR)
         {
@@ -79,13 +76,13 @@ namespace Lidar_Maps
 
                 //Xoay 90 do
 
-                //  double X = lstDot[i].y;
-                //  double Y = (-lstDot[i].x)+800;
+                //double X = -lstDot[i].x;
+               // double Y = -lstDot[i].y;
 
                 //Console.WriteLine(X + "  " + Y);
                 Pen p = new Pen(Color.GreenYellow);
-                g.DrawLine(new Pen(Color.Red, 2), (int)lstDot[i].x, (int)lstDot[i].y, (int)lstDot[i].x + 1, (int)lstDot[i].y);
-                // g.DrawLine(p, (int)X, (int)Y, (int)X + 1, (int)Y);
+                 g.DrawLine(new Pen(Color.Red, 2), (int)lstDot[i].x, (int)lstDot[i].y, (int)lstDot[i].x + 1, (int)lstDot[i].y);
+               // g.FillRectangle(new SolidBrush(Color.GreenYellow), (float)X - 1, (float)Y -1, 2, 2);
             }
         }
             //public void DrawMap(Graphics g, double DeltaTop, double DeltaRight, double DeltaLeft)

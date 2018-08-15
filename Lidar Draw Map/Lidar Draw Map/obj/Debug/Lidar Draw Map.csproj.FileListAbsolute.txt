@@ -1,0 +1,10 @@
+E:\Lidar Draw Map\Lidar Draw Map\bin\Debug\Lidar Draw Map.exe.config
+E:\Lidar Draw Map\Lidar Draw Map\bin\Debug\Lidar Draw Map.exe
+E:\Lidar Draw Map\Lidar Draw Map\bin\Debug\Lidar Draw Map.pdb
+E:\Lidar Draw Map\Lidar Draw Map\obj\Debug\Lidar Draw Map.csprojAssemblyReference.cache
+E:\Lidar Draw Map\Lidar Draw Map\obj\Debug\Lidar_Draw_Map.Form1.resources
+E:\Lidar Draw Map\Lidar Draw Map\obj\Debug\Lidar_Draw_Map.Properties.Resources.resources
+E:\Lidar Draw Map\Lidar Draw Map\obj\Debug\Lidar Draw Map.csproj.GenerateResource.cache
+E:\Lidar Draw Map\Lidar Draw Map\obj\Debug\Lidar Draw Map.csproj.CoreCompileInputs.cache
+E:\Lidar Draw Map\Lidar Draw Map\obj\Debug\Lidar Draw Map.exe
+E:\Lidar Draw Map\Lidar Draw Map\obj\Debug\Lidar Draw Map.pdb

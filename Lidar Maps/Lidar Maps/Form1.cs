@@ -24,9 +24,10 @@ namespace Lidar_Maps
         Map CurrentMap = new Map();
         LiDAR liDAR = new LiDAR(400, 400);
 
+        //BUTTON Ve nek
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            liDAR = new LiDAR(400, 400);
            
             panel1.Refresh();
             DataProcessing DATA = new DataProcessing();
@@ -38,23 +39,6 @@ namespace Lidar_Maps
             liDAR.setGPS(lstData[0].GetGPS().top, lstData[0].GetGPS().left, lstData[0].GetGPS().right);
             for (int i = 0; i < lstData.Count; i++)
             {
-                //if (lstData[i].GetGPS().top != 0 && lstData[i].GetGPS().left != 0 && lstData[i].GetGPS().right != 0)
-                //{
-                //    //Tính độ dịch
-                //    double DelTop = lstData[i].GetGPS().top - OriginMap.GetGPS().top;
-                //    double DelRight = lstData[i].GetGPS().right - OriginMap.GetGPS().right; ;
-                //    double DelLeft = lstData[i].GetGPS().left - OriginMap.GetGPS().left;
-
-                //    //Console.WriteLine("deltop: " + DelTop);
-                //    //Vẽ
-                //    // Console.WriteLine("Map " + i);
-                //    lstData[i].DrawMap(g, DelTop, DelRight, DelLeft);
-                //    // lstData[i].DrawGPS(g);
-                //    SolidBrush brs = new SolidBrush(Color.Black);
-                //    g.DrawString("MAP: " + (i - 1), new Font("Arial", 16), brs, 0, 0);
-                //    SolidBrush br = new SolidBrush(Color.Yellow);
-                //    g.DrawString("MAP: " + i, new Font("Arial", 16), br, 0, 0);
-                //}
                 if (lstData[i].GetGPS().top != 0 && lstData[i].GetGPS().left != 0 && lstData[i].GetGPS().right != 0)
                 {
                     Console.WriteLine("Map: " + (i + 1).ToString());
@@ -68,15 +52,6 @@ namespace Lidar_Maps
                     g.DrawString("MAP: " + i, new Font("Arial", 16), br, 0, 0);
                 }
             }
-
-            //for (int i = 0; i < lstData.Count; i++)
-            //{
-            //   // Console.WriteLine("Map: " + (i + 1).ToString());
-            //  //  lstData[i].ShowGPS();
-            //   // lstData[i].Show();
-
-            //   // Console.WriteLine();
-            //}
 
             MessageBox.Show("Vẽ xong nà!");
 

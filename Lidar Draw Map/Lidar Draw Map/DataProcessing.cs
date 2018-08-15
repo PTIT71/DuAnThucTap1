@@ -6,10 +6,43 @@ using System.Threading.Tasks;
 using System.IO;
 
 
-namespace Lidar_Maps
+namespace Lidar_Draw_Map
 {
     class DataProcessing
     {
+        public List<Map> ConvertMap(List<Map> lstMap)
+        {
+            List<Map> newListMap = new List<Map>();
+            foreach (Map map in lstMap)
+            {
+                Map newMap;
+                List<Dot> tempListDot = new List<Dot>();
+                double S = 0;
+                int n = 1;
+                S += map.lstDot[0].Dist;
+                for (int i = 0; i < map.lstDot.Count - 1; i++)
+                {
+                    Dot tempDot;
+                    if ((int)(map.lstDot[i].Angle) == (int)(map.lstDot[i + 1].Angle))
+                    {
+                        n++;
+                        S += map.lstDot[i + 1].Dist;
+                    }
+                    else
+                    {
+
+                        tempDot = new Dot((int)(map.lstDot[i].Angle), (S / n));
+                        tempListDot.Add(tempDot);
+                        S = map.lstDot[i + 1].Dist;
+                        n = 1;
+
+                    }
+                }
+                newMap = new Map(tempListDot);
+                newListMap.Add(newMap);
+            }
+            return newListMap;
+        }
         public bool IsReadFile = false;
         //Lấy dữ liệu từ file lên mảng chứa:
         public List<Map> GetData()
@@ -34,7 +67,7 @@ namespace Lidar_Maps
                     if (IsReadFile)
                     {
                         newDot = new Dot(Convert.ToDouble(data[0]), Convert.ToDouble(data[1]));
-                        if (newDot.Angle < oldDot.Angle && ((oldDot.Angle) >= (359)) && (newDot.Angle <= 2)) // -90 quay hình
+                        if (newDot.Angle < oldDot.Angle && ((oldDot.Angle) >= (300)) && (newDot.Angle <= 15)) // -90 quay hình
                         {
                             //Qua map mới
                             map = new Map();
@@ -68,6 +101,7 @@ namespace Lidar_Maps
                                 //Bỏ vô Map hiện tại
                                 lstMap[lstMap.Count - 1].lstDot.Add(newDot);
                                 oldDot = newDot;
+                               
                             }
                             IsReadFile = true;
 
@@ -103,52 +137,35 @@ namespace Lidar_Maps
                 return false;
             }
         }
-        /*
-        public List<double> standarData()
+
+        public List<Map> xulydulieu()
         {
-             List<double> lstData = RotateAxis( GetData());
-
-           // List<double> lstData = GetData();
-
-            List<double> lstDataStandar = new List<double>();
-
-
-            for (int i = 0; i < lstData.Count - 3; i += 3)
+            List<Map> lst = GetData();
+            List<Map> realMAp = new List<Map>();
+            for(int i =0;i<lst.Count;i++)
             {
-                //double x = (lstData[i + 1] * Math.Cos(DegreeToRadius(lstData[i]))) *0.1 +300;
-                //double y = (lstData[i + 1] * Math.Sin(DegreeToRadius(lstData[i]))) * 0.1 +300;
+                double valueSave = 0;
+                int count = 0;
+                double TBAge = 0;
+                double TBDis = 0;
+                Map mn = new Map();
+                for(int j =0;j<lst[i].lstDot.Count;j++)
+                {
+                    if((int)lst[i].lstDot[j].Angle!=valueSave )
+                    {
+                        TBAge = TBAge / (double)count;
+                        TBDis = TBDis / (double)count;
 
-                double x = (lstData[i + 1] * Math.Cos(DegreeToRadius(lstData[i]))) * Form1.dophangiai/100 + 400;
-                double y = (lstData[i + 1] * Math.Sin(DegreeToRadius(lstData[i]))) * Form1.dophangiai/100 + 400;
-
-                //Test đọc giá trị được tính tóa
-                // Console.WriteLine("Khoang Cach: " + lstData[i + 1] + " " + "Angle: " + lstData[i]);
-                //
-
-                //Hết test
-                lstDataStandar.Add(x);
-                lstDataStandar.Add(y);
+                        if(!(TBDis==0 && TBAge==0))
+                        {
+                            Dot d = new Dot(TBAge, TBDis);
+                            mn.lstDot.Add(d);
+                        }
+                    }
+                }
+                realMAp.Add(mn);
             }
-
-            Console.WriteLine("So Dong: " + lstDataStandar.Count);
-            return lstDataStandar;
+            return realMAp;
         }
-        //Xoay Hệ trục tọa độ 180 độ: chuyển hệ trục lập trình sang hệ trục normal
-        public List<double> RotateAxis(List<double> lst)
-        {
-            for(int i =0;i<lst.Count-3;i+=3)
-            {
-                lst[i] -=90;
-            }
-            return lst;
-        }
-        //chuyển dổi độ sang radian ứng dụng trong hàm sin cos trong standarData Function
-        static double DegreeToRadius(double Angle)
-        {
-            return (Angle * Math.PI) / 180;
-        }
-        */
-         
-
     }
 }
