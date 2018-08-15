@@ -80,6 +80,12 @@ namespace Lidar_Draw_Map
                 //Khi chuộc bấm xuống (trong lúc chế độ xóa)
                 if (DrawScreen.isdown)
                 {
+                    if(DrawScreen.OnDowning)
+                    {
+                        //Lưu hình hiện tại để phòng ngừa undo;
+                        MapsUndo = new Bitmap((Bitmap)MapsBackground.Clone());
+                        DrawScreen.OnDowning = false;
+                    }
                     //Vẽ hình xóa (hình tròn)
                     ScreenView.erase();
                     //Chụp lại map hiện tại (khi đã xóa cái gì đó rồi á)
@@ -215,11 +221,14 @@ namespace Lidar_Draw_Map
         }
 
         public static bool bIsDelete =false;
+        public static Bitmap MapsBackground;
+        public static Bitmap MapsUndo;
         private void btnToolDraw_Click(object sender, EventArgs e)
         {
             if (bIsDelete == false)
             {
                 MapsBackground = new Bitmap( ScreenView.CurrentMapView());
+                MapsUndo = new Bitmap(ScreenView.CurrentMapView());
 
                 bIsDelete = true;
                 bIsDraw = false;
@@ -236,7 +245,7 @@ namespace Lidar_Draw_Map
 
         public static double PisArcDelete = 1;
 
-      public static Bitmap MapsBackground;
+     
         private void trackBarDelete_Scroll(object sender, EventArgs e)
         {
             PisArcDelete = trackBarDelete.Value;
@@ -269,5 +278,11 @@ namespace Lidar_Draw_Map
                 MapsBackground.Save("Mapa.png", System.Drawing.Imaging.ImageFormat.Png);
         }
 
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+           // MapsUndo = new Bitmap(MapsBackground);
+            MapsUndo.Save("MapUndo.png", System.Drawing.Imaging.ImageFormat.Png);
+            MapsBackground = new Bitmap(MapsUndo);
+        }
     }
 }

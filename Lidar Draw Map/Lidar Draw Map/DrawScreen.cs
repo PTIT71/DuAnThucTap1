@@ -62,6 +62,8 @@ namespace Lidar_Draw_Map
         {
             bIsMouseMove = false;
         }
+        //Là đang nhấn giữ, kéo. Giúp không lưu mapundo liên tục. 
+        public static bool OnDowning = false;
         private void DrawScreen_MouseDown(object sender, MouseEventArgs e)
         {
             //  MessageBox.Show("Donwn");
@@ -89,9 +91,13 @@ namespace Lidar_Draw_Map
             if (Form1.bIsDelete)
             {
                 if (Control.MouseButtons == System.Windows.Forms.MouseButtons.Left)
-                    isdown = true;
+                {
 
-
+                        OnDowning = true;
+                        isdown = true;
+                    
+                }
+                    
             }
         }
         public static bool bCoordAxis = false;
@@ -132,8 +138,13 @@ namespace Lidar_Draw_Map
             DrawOnBitmap.FillEllipse(brs, new Rectangle(PMouseDelete.X - (int)w / 2, PMouseDelete.Y - (int)h / 2, (int)w, (int)h));
         }
 
-       
-      
+        public void DrawMapUndo()
+        {
+            DrawOnBitmap.DrawImage(Form1.MapsUndo, new Point(0, 0));
+        }
+
+
+
         public void DrawMapOnScreen(LiDAR Lidar, Map Map,int  deg, int index)
         {
             DrawOnScreen.DrawImage(DrawMapOnBitmap(Lidar, Map, deg, index), new Point(0, 0));

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmbDreg = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnTool = new System.Windows.Forms.Button();
             this.trackBarDelete = new System.Windows.Forms.TrackBar();
@@ -42,7 +42,7 @@
             this.btnDraw = new System.Windows.Forms.Button();
             this.btnImportFile = new System.Windows.Forms.Button();
             this.pn2 = new System.Windows.Forms.Panel();
-            this.cmbDreg = new System.Windows.Forms.ComboBox();
+            this.btnUndo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -54,8 +54,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.btnUndo);
             this.panel1.Controls.Add(this.cmbDreg);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.btnTool);
             this.panel1.Controls.Add(this.trackBarDelete);
@@ -72,15 +72,18 @@
             this.panel1.Size = new System.Drawing.Size(1369, 46);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // cmbDreg
             // 
-            this.button1.Location = new System.Drawing.Point(1040, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.cmbDreg.FormattingEnabled = true;
+            this.cmbDreg.Items.AddRange(new object[] {
+            "0",
+            "90",
+            "180",
+            "270"});
+            this.cmbDreg.Location = new System.Drawing.Point(702, 12);
+            this.cmbDreg.Name = "cmbDreg";
+            this.cmbDreg.Size = new System.Drawing.Size(52, 21);
+            this.cmbDreg.TabIndex = 10;
             // 
             // btnSave
             // 
@@ -201,18 +204,16 @@
             this.pn2.Size = new System.Drawing.Size(1362, 691);
             this.pn2.TabIndex = 1;
             // 
-            // cmbDreg
+            // btnUndo
             // 
-            this.cmbDreg.FormattingEnabled = true;
-            this.cmbDreg.Items.AddRange(new object[] {
-            "0",
-            "90",
-            "180",
-            "270"});
-            this.cmbDreg.Location = new System.Drawing.Point(702, 12);
-            this.cmbDreg.Name = "cmbDreg";
-            this.cmbDreg.Size = new System.Drawing.Size(52, 21);
-            this.cmbDreg.TabIndex = 10;
+            this.btnUndo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUndo.Location = new System.Drawing.Point(1021, 12);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(75, 23);
+            this.btnUndo.TabIndex = 11;
+            this.btnUndo.Text = "Undo";
+            this.btnUndo.UseVisualStyleBackColor = true;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
             // Form1
             // 
@@ -251,8 +252,8 @@
         private System.Windows.Forms.Panel pn2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cmbDreg;
+        private System.Windows.Forms.Button btnUndo;
     }
 }
 
